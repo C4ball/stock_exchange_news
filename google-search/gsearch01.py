@@ -11,9 +11,10 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
 noticias = []
+enderecos = []
 
 for url in search ('petrobras site:www.infomoney.com.br', stop=20):
-    noticias.append(url)
+    enderecos.append(url)
     
     
 def salva_arquivo(nome, conteudo):
@@ -35,6 +36,7 @@ def limpa_html(conteudo):
   ##  texto = bsObj.text
     return texto
 
+noticias =   [s for s in enderecos if "/noticia/" in s]
 
 for noticia in noticias:    
     conteudo = urlopen(noticia).read().decode('utf-8')
