@@ -1,11 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Feb  5 20:43:23 2019
-
-@author: rodri
-"""
-
-from googlesearch import search
+#from googlesearch import search
+import calendar
 from urllib.request import urlopen
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
@@ -24,16 +18,24 @@ def google_search(search_term, api_key, cse_id, **kwargs):
       res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
       return res['items']
 
-for i in range(0,10):
-        
-    results= google_search("petrobras",my_api_key,my_cse_id,start=(i*10 +1) ) 
+for mm in range(1,13):
     
-    for result in results:
-        enderecos.append(result["link"])  
+    ult_dia = calendar.monthrange(2018,mm)[1]
+    
+    range_data = 'date:r:2018' + str(f'{mm:02}') + '01:2018' + str(f'{mm:02}') + str(f'{ult_dia:02}')
+    print(range_data)
+    for i in range(0,10):
+        try:
+            results = google_search("petrobras",my_api_key,my_cse_id,start=(i*10 +1),sort = range_data ) 
+            
+            for result in results:
+                enderecos.append(result["link"])  
+        except:
+            break
         #print(result["link"])
 
 
-
+google_search("petrobras",my_api_key,my_cse_id).length 
 
 
 
