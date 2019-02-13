@@ -35,9 +35,6 @@ for mm in range(1,13):
         #print(result["link"])
 
 
-google_search("petrobras",my_api_key,my_cse_id).length 
-
-
 
 
 
