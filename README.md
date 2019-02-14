@@ -29,3 +29,4 @@ Material TCC - Pos BI 17 - Impacta
 
 2. Execute o programa "gsearch2.py" em seu console Python:
 			
+# Continua....
