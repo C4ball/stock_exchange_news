@@ -7,10 +7,10 @@ from googleapiclient.discovery import build
 
 #Variáveis Globais
 foldercargas = 'X:/Google Drive/Impacta/WebMining/infomoney/Cargas/'
-empresas = ['petrobras','vale', 'santander']
+empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 #KEYS da API do Google
-my_api_key = "AIzaSyCTrqogVnf_Oh8QT52VsUAsBFiBPCKZWLk"
+my_api_key = "AIzaSyBREm0Qs7PV_Kagr7SrekU5c-L0DQPnbRk"
 my_cse_id = "001357824499823729082:zjs1ww-woeu"
 
 
@@ -54,7 +54,7 @@ for empresa in empresas:
         ult_dia = calendar.monthrange(2018,mm)[1]
         
         range_data = 'date:r:2018' + str(f'{mm:02}') + '01:2018' + str(f'{mm:02}') + str(f'{ult_dia:02}')
-        print(empresa + range_data)
+        print(empresa + ' ' + range_data)
         for i in range(0,10):
             try:
                 results = google_search(empresa,my_api_key,my_cse_id,start=(i*10 +1),sort = range_data ) 
