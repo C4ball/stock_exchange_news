@@ -20,9 +20,15 @@ Material TCC - Pos BI 17 - Impacta
 		* googleapiclient.discovery
 			
 	* Conta de Desenvolvimento no Google Search API
+
 	* Conta de Desenvolvimento no Twitter
+		* Realizar inscrição no Twitter como Desenvolvedor
+		* Criar um App no Twitter no link: https://developer.twitter.com/en/apps
+		* Gerar:
+			* Consumer API keys
+			* Access token & access token secret
 	
-# Guia de Instalação:
+# Guia de Instalação - Crawler Sites (gsearch02.py)
 
 1. Faça checkout do projeto em:
 (https://github.com/rodrigodds/tccbi17.git)
