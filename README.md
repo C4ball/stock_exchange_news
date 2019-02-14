@@ -18,6 +18,7 @@ Material TCC - Pos BI 17 - Impacta
 			- urllib.request
 			- bs4
 			- googleapiclient.discovery
+			
 	- Conta de Desenvolvimento no Google Search API
 	- Conta de Desenvolvimento no Twitter
 	
