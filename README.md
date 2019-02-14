@@ -12,6 +12,7 @@ Material TCC - Pos BI 17 - Impacta
 * Criação de crawler para download de Tweets referentes a determinadas empresas que operam na bolsa de valores
 
 # Pré-Requisitos para Utilização:
+	
 * Python 3.6 ou superior
 	* Bibliotecas em uso:
 		* calendar
@@ -19,14 +20,18 @@ Material TCC - Pos BI 17 - Impacta
 		* bs4
 		* googleapiclient.discovery
 			
-	* Conta de Desenvolvimento no Google Search API
+* Conta de Desenvolvimento no Google Search API
+	* Realizar inscrição no Google Cloud como Desenvolvedor
+		* *Os experimentos foram realizados com o tipo gratuito de conta*
+	* 
 
-	* Conta de Desenvolvimento no Twitter
-		* Realizar inscrição no Twitter como Desenvolvedor
-		* Criar um App no Twitter no link: https://developer.twitter.com/en/apps
-		* Gerar:
-			* Consumer API keys
-			* Access token & access token secret
+* Conta de Desenvolvimento no Twitter
+	* Realizar inscrição no Twitter como Desenvolvedor
+		* *Os experimentos foram realizados com o tipo gratuito de conta*
+	* Criar um App no Twitter no link: https://developer.twitter.com/en/apps
+	* Gerar:
+		* Consumer API keys
+		* Access token & access token secret
 	
 # Guia de Instalação - Crawler Sites (gsearch02.py)
 
