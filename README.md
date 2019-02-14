@@ -23,7 +23,7 @@ Material TCC - Pos BI 17 - Impacta
 * Conta de Desenvolvimento no Google Search API
 	* Realizar inscrição no Google Cloud como Desenvolvedor
 		* *Os experimentos foram realizados com o tipo gratuito de conta*
-	* 
+	* Criar busca a ser utilizada no script
 
 * Conta de Desenvolvimento no Twitter
 	* Realizar inscrição no Twitter como Desenvolvedor
