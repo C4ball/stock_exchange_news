@@ -7,9 +7,8 @@ from googleapiclient.discovery import build
 
 #Variáveis Globais
 foldercargas = 'infomoney/Cargas/'
-empresas = ['sabesp']
+empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
-#empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 #KEYS da API do Google
 with open('my_api_key.txt', 'r',encoding='utf8') as api_key:
