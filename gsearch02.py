@@ -68,7 +68,7 @@ for empresa in empresas:
             
             ult_dia = calendar.monthrange(ano,mm)[1]
             
-            range_data = 'date:r:2018' + str(f'{mm:02}') + '01:2018' + str(f'{mm:02}') + str(f'{ult_dia:02}')
+            range_data = 'date:r:' + ano + str(f'{mm:02}') + '01:' + ano + str(f'{mm:02}') + str(f'{ult_dia:02}')
             print(empresa + ' ' + range_data)
             
             #Realiza busca no Google. Loop por . Limite de 10 Páginas (100 resultados)
