@@ -13,14 +13,14 @@ Material TCC - Pos BI 17 - Impacta
 
 # Pré-Requisitos para Utilização
 * Python 3.6 ou superior
-** Bibliotecas em uso:
-*** calendar
-*** urllib.request
-*** bs4
-*** googleapiclient.discovery
+	* Bibliotecas em uso:
+		* calendar
+		* urllib.request
+		* bs4
+		* googleapiclient.discovery
 			
-** Conta de Desenvolvimento no Google Search API
-** Conta de Desenvolvimento no Twitter
+	* Conta de Desenvolvimento no Google Search API
+	* Conta de Desenvolvimento no Twitter
 	
 # Guia de Instalação
 	1 - Faça checkout do projeto em:
