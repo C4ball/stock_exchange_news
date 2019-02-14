@@ -7,7 +7,9 @@ from googleapiclient.discovery import build
 
 #Variáveis Globais
 foldercargas = 'infomoney/Cargas/'
-empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
+empresas = ['sabesp']
+
+#empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 #KEYS da API do Google
 with open('my_api_key.txt', 'r',encoding='utf8') as api_key:
@@ -56,19 +58,20 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 #Executa consultas por empresa
 for empresa in empresas:
 
-    #Array de Links de noticias POR EMPRESA
-    noticias = []
-    enderecos = []
-        
+
     #Range de anos a serem buscados
     for ano in range(2018,2020):
- 
+
+        #Array de Links de noticias POR EMPRESA POR ANO
+        noticias = []
+        enderecos = []
+            
         
         for mm in range(1,13):
             
             ult_dia = calendar.monthrange(ano,mm)[1]
             
-            range_data = 'date:r:' + ano + str(f'{mm:02}') + '01:' + ano + str(f'{mm:02}') + str(f'{ult_dia:02}')
+            range_data = 'date:r:' + str(ano) + str(f'{mm:02}') + '01:' + str(ano) + str(f'{mm:02}') + str(f'{ult_dia:02}')
             print(empresa + ' ' + range_data)
             
             #Realiza busca no Google. Loop por . Limite de 10 Páginas (100 resultados)
@@ -88,7 +91,7 @@ for empresa in empresas:
             try:
                 conteudo = urlopen(noticia).read().decode('utf-8')
                 texto = empresa + '|' + limpa_html(conteudo)
-                salva_arquivo(foldercargas + empresa +'/infomoney_' + empresa + '_' + str(noticias.index(noticia)) +'.html', texto)    
+                salva_arquivo(foldercargas + empresa +'/infomoney_' + empresa + '_' + str(ano) + '_' + str(noticias.index(noticia)) +'.html', texto)    
             except:
                 print(noticia)
                 
