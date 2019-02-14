@@ -11,4 +11,13 @@ Material TCC - Pos BI 17 - Impacta
 	- Criação de crawler para download de sites de notícias sobre determinadas empresas que operam na bolsa de valores
 	- Criação de crawler para download de Tweets referentes a determinadas empresas que operam na bolsa de valores
 
-
+# Pré-Requisitos para Utilização
+	- Python 3.6 ou superior
+		- Bibliotecas em uso:
+			- calendar
+			- urllib.request
+			- bs4
+			- googleapiclient.discovery
+	- Conta de Desenvolvimento no Google Search API
+	- Conta de Desenvolvimento no Twitter
+	
