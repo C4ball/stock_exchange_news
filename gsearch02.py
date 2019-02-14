@@ -10,9 +10,16 @@ foldercargas = 'infomoney/Cargas/'
 empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 #KEYS da API do Google
+with open('my_api_key.txt', 'r',encoding='utf8') as api_key:
+    my_api_key = api_key.readlines()
 
-my_api_key = "AIzaSyBREm0Qs7PV_Kagr7SrekU5c-L0DQPnbRk"
-my_cse_id = "001357824499823729082:zjs1ww-woeu"
+with open('my_cse_id.txt', 'r',encoding='utf8') as cse_id:
+    my_cse_id = cse_id.readlines()
+
+
+
+print(my_api_key)
+print(my_cse_id)
 
 
 #Funções
@@ -67,7 +74,7 @@ for empresa in empresas:
             #Realiza busca no Google. Loop por . Limite de 10 Páginas (100 resultados)
             for i in range(0,10):
                 try:
-                    results = google_search(empresa,my_api_key,my_cse_id,start=(i*10 +1),sort = range_data ) 
+                    results = google_search(empresa,my_api_key[0],my_cse_id[0],start=(i*10 +1),sort = range_data ) 
                     
                     for result in results:
                         enderecos.append(result["link"])  
