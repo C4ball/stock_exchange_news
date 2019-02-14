@@ -23,8 +23,9 @@ Material TCC - Pos BI 17 - Impacta
 	* Conta de Desenvolvimento no Twitter
 	
 # Guia de Instalação:
-	1. Faça checkout do projeto em:
-		[GitHub](https://github.com/rodrigodds/tccbi17.git)
-		
-	2. Execute o programa "gsearch2.py" em seu console Python:
+
+1. Faça checkout do projeto em:
+(https://github.com/rodrigodds/tccbi17.git)
+
+2. Execute o programa "gsearch2.py" em seu console Python:
 			
