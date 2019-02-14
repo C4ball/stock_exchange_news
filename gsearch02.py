@@ -10,6 +10,7 @@ foldercargas = 'infomoney/Cargas/'
 empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 #KEYS da API do Google
+
 my_api_key = "AIzaSyBREm0Qs7PV_Kagr7SrekU5c-L0DQPnbRk"
 my_cse_id = "001357824499823729082:zjs1ww-woeu"
 
@@ -45,33 +46,42 @@ def google_search(search_term, api_key, cse_id, **kwargs):
           return res['items']
 
 
-
+#Executa consultas por empresa
 for empresa in empresas:
+
+    #Array de Links de noticias POR EMPRESA
     noticias = []
     enderecos = []
-    for mm in range(1,13):
         
-        ult_dia = calendar.monthrange(2018,mm)[1]
+    #Range de anos a serem buscados
+    for ano in range(2018,2020):
+ 
         
-        range_data = 'date:r:2018' + str(f'{mm:02}') + '01:2018' + str(f'{mm:02}') + str(f'{ult_dia:02}')
-        print(empresa + ' ' + range_data)
-        for i in range(0,10):
-            try:
-                results = google_search(empresa,my_api_key,my_cse_id,start=(i*10 +1),sort = range_data ) 
-                
-                for result in results:
-                    enderecos.append(result["link"])  
-            except:
-                break
-
-        #Extrai somente os Links de Notícias da Infomoney
-        noticias =   [s for s in enderecos if "/noticia/" in s]
-    
-    for noticia in noticias:
-        try:
-            conteudo = urlopen(noticia).read().decode('utf-8')
-            texto = empresa + '|' + limpa_html(conteudo)
-            salva_arquivo(foldercargas + empresa +'/infomoney_' + empresa + '_' + str(noticias.index(noticia)) +'.html', texto)    
-        except:
-            print(noticia)
+        for mm in range(1,13):
             
+            ult_dia = calendar.monthrange(ano,mm)[1]
+            
+            range_data = 'date:r:2018' + str(f'{mm:02}') + '01:2018' + str(f'{mm:02}') + str(f'{ult_dia:02}')
+            print(empresa + ' ' + range_data)
+            
+            #Realiza busca no Google. Loop por . Limite de 10 Páginas (100 resultados)
+            for i in range(0,10):
+                try:
+                    results = google_search(empresa,my_api_key,my_cse_id,start=(i*10 +1),sort = range_data ) 
+                    
+                    for result in results:
+                        enderecos.append(result["link"])  
+                except:
+                    break
+    
+            #Extrai somente os Links de Notícias da Infomoney
+            noticias =   [s for s in enderecos if "/noticia/" in s]
+        
+        for noticia in noticias:
+            try:
+                conteudo = urlopen(noticia).read().decode('utf-8')
+                texto = empresa + '|' + limpa_html(conteudo)
+                salva_arquivo(foldercargas + empresa +'/infomoney_' + empresa + '_' + str(noticias.index(noticia)) +'.html', texto)    
+            except:
+                print(noticia)
+                
