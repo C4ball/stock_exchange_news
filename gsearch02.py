@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from googleapiclient.discovery import build
 
 #Variáveis Globais
-foldercargas = 'X:/Google Drive/Impacta/WebMining/infomoney/Cargas/'
+foldercargas = 'infomoney/Cargas/'
 empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 #KEYS da API do Google
