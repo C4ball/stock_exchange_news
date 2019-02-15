@@ -4,6 +4,8 @@ from urllib.request import urlopen
 #from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from googleapiclient.discovery import build
+import os
+
 
 #Variáveis Globais
 foldercargas = 'infomoney/Cargas/'
@@ -85,7 +87,10 @@ for empresa in empresas:
     
             #Extrai somente os Links de Notícias da Infomoney
             noticias =   [s for s in enderecos if "/noticia/" in s]
-        
+            
+        if not os.path.exists(foldercargas + empresa):   
+            os.makedirs(foldercargas + empresa)  
+            
         for noticia in noticias:
             try:
                 conteudo = urlopen(noticia).read().decode('utf-8')
