@@ -61,7 +61,7 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Execute o programa "gsearch2.py" em seu console Python:
 	* python gsearch2.py
 
-* Aguardo o término da execução onde o programa criará a subpasta "infomoney/cargas" e uma sub-pasta para as empresas que estão em nosso estudo, que são:
+* Aguardo o término da execução onde o programa criará a sub-pasta com o nome da variável "foldercargas" e uma sub-pasta para cada empresa informada em "empresas"
 
-			
-# Continua....
+
+# Guia de Instalação - Crawler Twitter **(Em desenvolvimento)**
