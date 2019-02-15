@@ -27,7 +27,7 @@ Material TCC - Pos BI 17 - Impacta
 		* Link: (https://cse.google.com/all)
 		* Passo a passo: (https://support.google.com/customsearch/answer/4513886?visit_id=636858480447685538-3446621163&rd=1)
 
-* Conta de Desenvolvimento no Twitter (Em desenvolvimento)
+* Conta de Desenvolvimento no Twitter **(Em desenvolvimento)**
 	* Realizar inscrição no Twitter como Desenvolvedor
 		* *Os experimentos foram realizados com o tipo gratuito de conta*
 	* Criar um App no Twitter no link: https://developer.twitter.com/en/apps
@@ -50,7 +50,16 @@ Material TCC - Pos BI 17 - Impacta
 * Abra o arquivo my_cse_id.txt e o preencha com o seu CSE ID do Google Search.
 	* Formato: 000000024499823729082:xxxxxx-xxxx
 
+* Verifique no programa "gsearch02.py" se as variaveis globais estão de acordo com a sua necessidade:
 
-. Execute o programa "gsearch2.py" em seu console Python:
+#Variáveis Globais
+foldercargas = 'infomoney/Cargas/'
+empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
+
+* Execute o programa "gsearch2.py" em seu console Python:
+	* python gsearch2.py
+
+* Aguardo o término da execução onde o programa criará a subpasta "infomoney/cargas" e uma sub-pasta para as empresas que estão em nosso estudo, que são:
+
 			
 # Continua....
