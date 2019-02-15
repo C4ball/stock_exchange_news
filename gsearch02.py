@@ -97,5 +97,5 @@ for empresa in empresas:
                 texto = empresa + '|' + limpa_html(conteudo)
                 salva_arquivo(foldercargas + empresa +'/infomoney_' + empresa + '_' + str(ano) + '_' + str(noticias.index(noticia)) +'.html', texto)    
             except:
-                print(noticia)
+                print("Erro na carga de: " + noticia)
                 
