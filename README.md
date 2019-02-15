@@ -8,8 +8,8 @@ Material TCC - Pos BI 17 - Impacta
 * Rodrigo Dias
 
 # Objetivo deste Projeto:
-* Criação de crawler para download de sites de notícias sobre determinadas empresas que operam na bolsa de valores
-* Criação de crawler para download de Tweets referentes a determinadas empresas que operam na bolsa de valores
+* Criação de crawler para download de sites de notícias sobre determinadas empresas que operam na bolsa de valores.
+* Criação de crawler para download de Tweets referentes a determinadas empresas que operam na bolsa de valores.
 
 # Pré-Requisitos para Utilização:
 	
@@ -23,9 +23,11 @@ Material TCC - Pos BI 17 - Impacta
 * Conta de Desenvolvimento no Google Search API
 	* Realizar inscrição no Google Cloud como Desenvolvedor
 		* *Os experimentos foram realizados com o tipo gratuito de conta*
-	* Criar busca a ser utilizada no script
+	* Criar item de busca personalizada no console do Google informando o nome do site que você usará de domínio de busca (em nosso exemplo estamos utilizando: www.infomoney.com.br):
+		* Link: (https://cse.google.com/all)
+		* Passo a passo: (https://support.google.com/customsearch/answer/4513886?visit_id=636858480447685538-3446621163&rd=1)
 
-* Conta de Desenvolvimento no Twitter
+* Conta de Desenvolvimento no Twitter (Em desenvolvimento)
 	* Realizar inscrição no Twitter como Desenvolvedor
 		* *Os experimentos foram realizados com o tipo gratuito de conta*
 	* Criar um App no Twitter no link: https://developer.twitter.com/en/apps
@@ -35,9 +37,20 @@ Material TCC - Pos BI 17 - Impacta
 	
 # Guia de Instalação - Crawler Sites (gsearch02.py)
 
-1. Faça checkout do projeto em:
+* Lembre-se de ter criado a sua API Key e CSE ID conforme informado nos pré-requisitos.
+
+* Faça checkout do projeto em:
 (https://github.com/rodrigodds/tccbi17.git)
 
-2. Execute o programa "gsearch2.py" em seu console Python:
+* Exporte o conteúdo do projeto para uma pasta a sua escolha.
+
+* Abra o arquivo my_api_key.txt e o preencha com sua API Key do Google Search.
+	* Formato: AIzaSyBRExxxxxxxxxagr7SrekU5c-xxxxxxxxx
+
+* Abra o arquivo my_cse_id.txt e o preencha com o seu CSE ID do Google Search.
+	* Formato: 000000024499823729082:xxxxxx-xxxx
+
+
+. Execute o programa "gsearch2.py" em seu console Python:
 			
 # Continua....
