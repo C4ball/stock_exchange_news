@@ -52,9 +52,11 @@ Material TCC - Pos BI 17 - Impacta
 
 * Verifique no programa "gsearch02.py" se as variaveis globais estão de acordo com a sua necessidade:
 
+´´´
 #Variáveis Globais
 foldercargas = 'infomoney/Cargas/'
 empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
+´´´
 
 * Execute o programa "gsearch2.py" em seu console Python:
 	* python gsearch2.py
