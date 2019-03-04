@@ -111,8 +111,7 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
     	min_days_old, max_days_old = 0, 7          # search limits e.g., from 7 to 8
                 	                               # gives current weekday from last week,
             	                                   # min_days_old=0 will search from right now
-    	BRA = '-23.533773, -46.625290,2500km'      # this geocode includes nearly all American
-        	                                       # states (and a large portion of Canada)
+    	BRA = '-23.533773, -46.625290,2500km'      # Brazil location and region
 		```												   
 
 	* Executar o programa e aguardar a execução onde serão apresentadas algumas mensagens em tela de acordo com o retorno da busca, como por exemplo:
