@@ -117,4 +117,10 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 	* Executar o programa e aguardar a execução onde serão apresentadas algumas mensagens em tela de acordo com o retorno da busca, como por exemplo:
 
-	
+		* Search phrase = petrobras   ----> palavra sendo buscada
+		* search limit (start/stop): 2019-02-25 23:59:59     ----> limite de busca
+		* since id (ending point) = 1100183661570347008     ----> ultimo ID coletado
+		* found 100 tweets    ----> quantidade de tweets encontrados
+		* exception raised, waiting 15 minutes      ----> limite excedido, aguardando 15 minutos
+		* (until: 2019-03-04 14:37:04.087542 )      ----> próxima execução
+		
