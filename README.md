@@ -128,4 +128,6 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/img-search-json.JPG?raw=true "Exemplo Exportação")
 
-	* Importação de Dados p/ Transformação ***(Em Desenvolvimento)***	
+		* Maximum number of empty tweet strings reached - exiting 	      ----> final da execução
+
+	* Importação de Dados p/ Transformação ***(Em Desenvolvimento)***
