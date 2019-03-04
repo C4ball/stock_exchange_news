@@ -27,7 +27,7 @@ Material TCC - Pos BI 17 - Impacta
 		* Link: (https://cse.google.com/all)
 		* Passo a passo: (https://support.google.com/customsearch/answer/4513886?visit_id=636858480447685538-3446621163&rd=1)
 
-* Conta de Desenvolvimento no Twitter **(Em desenvolvimento)**
+* Conta de Desenvolvimento no Twitter
 	* Realizar inscrição no Twitter como Desenvolvedor
 		* *Os experimentos foram realizados com o tipo gratuito de conta*
 	* Criar um App no Twitter no link: https://developer.twitter.com/en/apps
@@ -64,4 +64,41 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Aguardo o término da execução onde o programa criará a sub-pasta com o nome da variável "foldercargas" e uma sub-pasta para cada empresa informada em "empresas"
 
 
-# Guia de Instalação - Crawler Twitter **(Em desenvolvimento)**
+# Guia de Instalação - Crawler Twitter - tsearch01.py
+
+* Baseado no projeto de Cralwer - Twitter disponível em:
+	* https://galeascience.wordpress.com/2016/03/18/collecting-twitter-data-with-python/ 
+	* Projeto GitHub: https://github.com/agalea91/twitter_search
+
+* Objetivo:
+	* Coleta de Tweets com determinada palavra chave, limitado a 100 tweets por retorno, onde foi criado fluxo de operação onde é possível:
+		* Customizar palavras chave a serem buscadas;
+		* Looping auto-gerenciável considerando a limitação da API do Twitter que suspende por 15 minutos o limite de operações sem custo;
+		* Limitar a quantidade de tempo que o Crawler ficará rodando na máquina;
+		* Captura e armazenagem do ID do Twitter para que a cada busca seja possível trazer somente os ID's ainda não armazenados;
+		* Parametrização do range de dias que serão considerados dentro do looping de busca (limitado a 7 dias - retroativos à data atual)
+		* Parametrização da região por geolocalização e range de busca dos tweets;]
+		* Criação de subpasta com nome de cada palavra que será buscada, onde será armazenado o JSON gerado pelo crawler;
+
+* Instruções de Uso:
+	* Baixe o projeto em sua máquina e abra o programa tsearch01.py
+	* Preencha os campos abaixo com os dados gerados no Twitter:
+	    consumer_key = 'xxxxxxxxxxxxxxxx'
+    	consumer_secret = 'xxxxxxxxxxxxxxxxxxx'
+    	access_token = 'xxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxx'
+    	access_secret = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+	* Preencha os parametros de busca (search_phrases, time_limit, max_tweets, min_days_old, max_days_old):
+		* Obs.: em nosso projeto estamos limitando as buscas com a geolocalização do Brasil, configurando a latitude e longitude na variável BRA;
+```
+	    search_phrases = ['itau', '#itau', 
+                     '#vale', 'petrobras',
+                     '#petrobras']
+    time_limit = 1.5                           # runtime limit in hours
+    max_tweets = 100                           # number of tweets per search (will be
+                                               # iterated over) - maximum is 100
+    min_days_old, max_days_old = 0, 7          # search limits e.g., from 7 to 8
+                                               # gives current weekday from last week,
+                                               # min_days_old=0 will search from right now
+    BRA = '-23.533773, -46.625290,2500km'      # this geocode includes nearly all American
+                                               # states (and a large portion of Canada)
+```		
