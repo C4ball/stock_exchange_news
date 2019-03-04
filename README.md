@@ -127,3 +127,5 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 		* Exemplo:
 
 		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/img-search-json.JPG?raw=true "Exemplo Exportação")
+
+	* Importação de Dados p/ Transformação ***(Em Desenvolvimento)***	
