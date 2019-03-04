@@ -19,6 +19,11 @@ Material TCC - Pos BI 17 - Impacta
 		* urllib.request
 		* bs4
 		* googleapiclient.discovery
+		* JSON
+		* Tweepy
+		* datetime
+		* time
+		* sys
 			
 * Conta de Desenvolvimento no Google Search API
 	* Realizar inscrição no Google Cloud como Desenvolvedor
@@ -82,14 +87,6 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 * Instruções de Uso:
 	* Baixe o projeto em sua máquina e abra o programa tsearch01.py
-	* Pré-Requisitos:
-		* Bibiliotecas:
-			* JSON
-			* Tweepy
-			* datetime
-			* time
-			* sys
-
 
 	* Preencha os campos abaixo com os dados gerados no Twitter:
 
@@ -118,4 +115,6 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
         	                                       # states (and a large portion of Canada)
 		```												   
 
-	* Executar 
+	* Executar o programa e aguardar a execução onde serão apresentadas algumas mensagens em tela de acordo com o retorno da busca, como por exemplo:
+
+	
