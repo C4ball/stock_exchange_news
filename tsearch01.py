@@ -26,10 +26,10 @@ packages imported above.
 def load_api():
     ''' Function that loads the twitter API after authorizing the user. '''
 
-    consumer_key = 'aMCyeCXQwusSrT55rpXYXVcDO'
-    consumer_secret = 'E0IbleyToJoaaEQkZTOiAHUnnKlNJJEqmSs8osEbYL124HeF8g'
-    access_token = '17290359-30JXx8VuwVFVM1SkGRPQ7EhO0UagqmqzjRgUTifaB'
-    access_secret = 'iUaJoF1yfXR2vEBZdWqzS6hyVwYKZsHSMcLqfeUAQfmdg'
+    consumer_key = ''
+    consumer_secret = ''
+    access_token = ''
+    access_secret = ''
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_secret)
     # load the twitter API via tweepy
