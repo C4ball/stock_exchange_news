@@ -126,4 +126,4 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 		* Exemplo
 
-		![Alt text](images/img-search-json.JPGraw=true "Exemplo Exportação")
+		![Alt text](images/img-search-json.jpg?raw=true "Exemplo Exportação")
