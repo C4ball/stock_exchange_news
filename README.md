@@ -124,6 +124,6 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 		* exception raised, waiting 15 minutes      ----> limite excedido, aguardando 15 minutos
 		* (until: 2019-03-04 14:37:04.087542 )      ----> próxima execução
 
-		* Exemplo
+		* Exemplo:
 
-		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/img-search-json.JPG?raw=true "Exemplo Exportação")
+		(https://github.com/rodrigodds/tccbi17/blob/master/images/img-search-json.JPG?raw=true "Exemplo Exportação")
