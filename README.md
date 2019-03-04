@@ -123,4 +123,7 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 		* found 100 tweets    ----> quantidade de tweets encontrados
 		* exception raised, waiting 15 minutes      ----> limite excedido, aguardando 15 minutos
 		* (until: 2019-03-04 14:37:04.087542 )      ----> próxima execução
-		
+
+		* Exemplo
+
+		![Alt text](images/img-search-json.JPGraw=true "Exemplo Exportação")
