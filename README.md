@@ -83,25 +83,28 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Instruções de Uso:
 	* Baixe o projeto em sua máquina e abra o programa tsearch01.py
 	* Preencha os campos abaixo com os dados gerados no Twitter:
-```	
+
+		```	
 	    consumer_key = 'xxxxxxxxxxxxxxxx'
     	consumer_secret = 'xxxxxxxxxxxxxxxxxxx'
     	access_token = 'xxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxx'
     	access_secret = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-
+		```
 
 	* Preencha os parametros de busca (search_phrases, time_limit, max_tweets, min_days_old, max_days_old):
 		* Obs.: em nosso projeto estamos limitando as buscas com a geolocalização do Brasil, configurando a latitude e longitude na variável BRA;
+		
 
-```
+		```
 	    search_phrases = ['itau', '#itau', 
                      '#vale', 'petrobras',
                      '#petrobras']
-    time_limit = 1.5                           # runtime limit in hours
-    max_tweets = 100                           # number of tweets per search (will be
-                                               # iterated over) - maximum is 100
-    min_days_old, max_days_old = 0, 7          # search limits e.g., from 7 to 8
-                                               # gives current weekday from last week,
-                                               # min_days_old=0 will search from right now
-    BRA = '-23.533773, -46.625290,2500km'      # this geocode includes nearly all American
-                                               # states (and a large portion of Canada)
+    	time_limit = 1.5                           # runtime limit in hours
+    	max_tweets = 100                           # number of tweets per search (will be
+        	                                       # iterated over) - maximum is 100
+    	min_days_old, max_days_old = 0, 7          # search limits e.g., from 7 to 8
+                	                               # gives current weekday from last week,
+            	                                   # min_days_old=0 will search from right now
+    	BRA = '-23.533773, -46.625290,2500km'      # this geocode includes nearly all American
+        	                                       # states (and a large portion of Canada)
+		```												   
