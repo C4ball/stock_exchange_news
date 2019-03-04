@@ -88,9 +88,11 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
     	consumer_secret = 'xxxxxxxxxxxxxxxxxxx'
     	access_token = 'xxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxx'
     	access_secret = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-```		
+```
+
 	* Preencha os parametros de busca (search_phrases, time_limit, max_tweets, min_days_old, max_days_old):
 		* Obs.: em nosso projeto estamos limitando as buscas com a geolocalização do Brasil, configurando a latitude e longitude na variável BRA;
+
 ```
 	    search_phrases = ['itau', '#itau', 
                      '#vale', 'petrobras',
