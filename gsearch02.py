@@ -4,6 +4,7 @@ from urllib.request import urlopen
 #from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from googleapiclient.discovery import build
+from threading import Thread
 import os
 
 
@@ -29,7 +30,7 @@ print(my_cse_id)
 
 #Salva arquivos no caminha indicado
 def salva_arquivo(nome, conteudo):
-    with  open (nome, 'w', encoding='utf-8') as file:
+    with  open (nome, 'w', encoding='latin-1') as file:
         file.write(conteudo)
 
 #Limpa conteúdo HTML da página e extrai conteúdo
@@ -42,9 +43,7 @@ def limpa_html(conteudo):
     artigo = bsObj(attrs={'class':"article__content"})[0].text
     data = bsObj(attrs={'class':"article__date"})[0].text
     titulo = bsObj(attrs={'class':"article__title"})[0].text
-    
-    
-    
+
     texto = data + '|' + titulo + '|' + artigo
   ##  texto = bsObj.text
     return texto  
@@ -55,6 +54,16 @@ def google_search(search_term, api_key, cse_id, **kwargs):
           res = service.cse().list(q=search_term, cx=cse_id, **kwargs).execute()
           return res['items']
 
+
+#Threads
+def th(ur,foldercargas,empresa,ano):
+    try:
+        conteudo = urlopen(ur).read()#.decode('latin-1')
+        texto =  limpa_html(conteudo)
+        salva_arquivo(foldercargas + empresa +'/infomoney_' + empresa + '_' + str(ano) + '_' + str(noticias.index(ur)) +'.html', texto) 
+        print(str(ur.index(noticia)))
+    except:
+        print("Erro na carga de: " + noticia)
 
 #Executa consultas por empresa
 for empresa in empresas:
@@ -82,7 +91,8 @@ for empresa in empresas:
                     
                     for result in results:
                         enderecos.append(result["link"])  
-                except:
+                except Exception as e :
+                    print(e)
                     break
     
             #Extrai somente os Links de Notícias da Infomoney
@@ -91,11 +101,13 @@ for empresa in empresas:
         if not os.path.exists(foldercargas + empresa):   
             os.makedirs(foldercargas + empresa)  
             
+        threadlist = []
+            
         for noticia in noticias:
-            try:
-                conteudo = urlopen(noticia).read().decode('utf-8')
-                texto = empresa + '|' + limpa_html(conteudo)
-                salva_arquivo(foldercargas + empresa +'/infomoney_' + empresa + '_' + str(ano) + '_' + str(noticias.index(noticia)) +'.html', texto)    
-            except:
-                print("Erro na carga de: " + noticia)
+            t = Thread(target=th,args=(noticia,foldercargas,empresa ,ano,))
+            t.start()
+            threadlist.append(t)
+            
+        for b in threadlist:
+            b.join()
                 
