@@ -5,13 +5,12 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from googleapiclient.discovery import build
 from threading import Thread
-import os
+#import os
 
 
 #Variáveis Globais
 foldercargas = 'infomoney/Cargas/'
-empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
-
+empresas = ['petrobras','vale', 'Itaú Unibanco']
 
 #KEYS da API do Google
 with open('my_api_key.txt', 'r',encoding='utf8') as api_key:
@@ -25,12 +24,13 @@ with open('my_cse_id.txt', 'r',encoding='utf8') as cse_id:
 print(my_api_key)
 print(my_cse_id)
 
-
+with  open ('dados_empresas.csv', 'w', encoding='latin-1') as file:
+    file.write('')
 #Funções
 
 #Salva arquivos no caminha indicado
 def salva_arquivo(nome, conteudo):
-    with  open (nome, 'w', encoding='latin-1') as file:
+    with  open (nome+'.csv', 'a', encoding='latin-1') as file:
         file.write(conteudo)
 
 #Limpa conteúdo HTML da página e extrai conteúdo
@@ -43,7 +43,15 @@ def limpa_html(conteudo):
     artigo = bsObj(attrs={'class':"article__content"})[0].text
     data = bsObj(attrs={'class':"article__date"})[0].text
     titulo = bsObj(attrs={'class':"article__title"})[0].text
+    
+    artigo = str.join(" ", artigo.splitlines())
+    artigo = artigo.replace('|',' ')
+    data = str.join(" ", data.splitlines())
+    data = data.replace('|',' ')
+    titulo = str.join(" ", titulo.splitlines())
+    titulo = titulo.replace('|',' ')
 
+    
     texto = data + '|' + titulo + '|' + artigo
   ##  texto = bsObj.text
     return texto  
@@ -59,11 +67,11 @@ def google_search(search_term, api_key, cse_id, **kwargs):
 def th(ur,foldercargas,empresa,ano):
     try:
         conteudo = urlopen(ur).read()#.decode('latin-1')
-        texto =  limpa_html(conteudo)
-        salva_arquivo(foldercargas + empresa +'/infomoney_' + empresa + '_' + str(ano) + '_' + str(noticias.index(ur)) +'.html', texto) 
-        print(str(ur.index(noticia)))
+        texto = ur + '|' + empresa + '|' + limpa_html(conteudo) + '\n' 
+        salva_arquivo('dados_empresas', texto) 
+#        print(str(ur.index(noticia)))
     except:
-        print("Erro na carga de: " + noticia)
+        print("Erro na carga de: " + ur)
 
 #Executa consultas por empresa
 for empresa in empresas:
@@ -98,8 +106,8 @@ for empresa in empresas:
             #Extrai somente os Links de Notícias da Infomoney
             noticias =   [s for s in enderecos if "/noticia/" in s]
             
-        if not os.path.exists(foldercargas + empresa):   
-            os.makedirs(foldercargas + empresa)  
+#        if not os.path.exists(foldercargas + empresa):   
+#            os.makedirs(foldercargas + empresa)  
             
         threadlist = []
             
