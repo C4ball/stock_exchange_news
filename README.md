@@ -129,7 +129,7 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 		* Maximum number of empty tweet strings reached - exiting 	      ----> final da execução
 
-# Guia de Instalação - Importação de Dados p/ Transformação - (load\loadB3-csv.py)
+# Guia de Instalação - Importação de Dados p/ Transformação - Dados B3 - (load\loadB3-csv.py)
 	
 * Realizar download da serie histórica desejada no link:
 	* http://www.bmfbovespa.com.br/pt_br/servicos/market-data/historico/mercado-a-vista/series-historicas/
@@ -138,5 +138,21 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Abrir o programa antes de executar e alterar as variáveis:
 	* bmf -> Informar o local do arquivo baixado;
 	* bmfload -> informar o local de saída do arquivo CSV que será gerado;
+* Na finalização do programa será geradao o arquivo: "bmf_load.csv"
 * Observações: 
 	* O programa está fazendo o filtro das linhas que contém o tipo de Registro - 01 - Cotações dos papéis por dia;
+
+# Guia de Instalação - Importação de Dados p/ Transformação - Dados Twitter -  (load\loadTwitter-csv.py)
+	
+* Verificar qual arquivo JSON gerado anteriormente deseja ser transformado em CSV;
+* Alterar o local do arquivo JSON na linha 6:
+	* for line in open('petrobras_2019-03-14_to_2019-03-20.json', 'r'):
+* Na finalização do programa será geradao o arquivo: "tweets_load.csv"
+
+# Guia de Instalação - Importação de Dados p/ Transformação - Dados Notícias
+
+* O programa de busca já gera o arquivo CSV para posterior importação, com nome: "dados_empresas.csv"
+
+
+
+

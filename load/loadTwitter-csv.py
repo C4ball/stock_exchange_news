@@ -7,7 +7,7 @@ for line in open('petrobras_2019-03-14_to_2019-03-20.json', 'r'):
     tweets.append(json.loads(line))
 
 
-txt = open("tweets.csv","w", encoding="utf-8")
+txt = open("tweets_load.csv","w", encoding="utf-8")
 
 for tweet in tweets:
     ID = ()
