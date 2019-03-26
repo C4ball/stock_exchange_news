@@ -24,6 +24,8 @@ Material TCC - Pos BI 17 - Impacta
 		* datetime
 		* time
 		* sys
+		* os
+		* dateutil
 			
 * Conta de Desenvolvimento no Google Search API
 	* Realizar inscrição no Google Cloud como Desenvolvedor
@@ -141,6 +143,8 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Na finalização do programa será geradao o arquivo: "bmf_load.csv"
 * Observações: 
 	* O programa está fazendo o filtro das linhas que contém o tipo de Registro - 01 - Cotações dos papéis por dia;
+	* Arquivo exemplo de entrada: example\COTAHIST_A2019.zip
+	* Arquivo exemplo de saída: example\bmf_load.zip 
 
 # Guia de Instalação - Importação de Dados p/ Transformação - Dados Twitter -  (load\loadTwitter-csv.py)
 	
@@ -148,11 +152,14 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Alterar o local do arquivo JSON na linha 6:
 	* for line in open('petrobras_2019-03-14_to_2019-03-20.json', 'r'):
 * Na finalização do programa será geradao o arquivo: "tweets_load.csv"
+* Observações:
+	* Arquivo exemplo de saída: example\tweets_load.zip
 
 # Guia de Instalação - Importação de Dados p/ Transformação - Dados Notícias
 
 * O programa de busca já gera o arquivo CSV para posterior importação, com nome: "dados_empresas.csv"
-
+* Observações:
+	* Arquivo exemplo de saída: example\dados_empresas.zip
 
 
 
