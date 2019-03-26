@@ -3,7 +3,7 @@ import json
 from dateutil import parser
 
 tweets = []
-for line in open('D:\pycharm\petrobras\petrobras_2019-03-14_to_2019-03-20.json', 'r'):
+for line in open('petrobras_2019-03-14_to_2019-03-20.json', 'r'):
     tweets.append(json.loads(line))
 
 
