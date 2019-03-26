@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-bmf = open('D:\pycharm\COTAHIST_A2019.TXT','r')
+bmf = open('COTAHIST_A2019.TXT','r')
 bmfload = open("bmf_load.csv",'w')
 
 data_cotacao = []
