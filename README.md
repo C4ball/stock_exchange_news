@@ -131,12 +131,12 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 # Guia de Instalação - Importação de Dados p/ Transformação - (load\loadB3-csv.py)
 	
-	* Realizar download da serie histórica desejada no link:
-		* http://www.bmfbovespa.com.br/pt_br/servicos/market-data/historico/mercado-a-vista/series-historicas/
-	* Layout usado como referência:
-		* http://www.bmfbovespa.com.br/lumis/portal/file/fileDownload.jsp?fileId=8A828D294E9C618F014EB7924B803F8B	 
-	* Abrir o programa antes de executar e alterar as variáveis:
-		* bmf -> Informar o local do arquivo baixado;
-		* bmfload -> informar o local de saída do arquivo CSV que será gerado;
-	* Observações: 
-		* O programa está fazendo o filtro das linhas que contém o tipo de Registro - 01 - Cotações dos papéis por dia;
+* Realizar download da serie histórica desejada no link:
+	* http://www.bmfbovespa.com.br/pt_br/servicos/market-data/historico/mercado-a-vista/series-historicas/
+* Layout usado como referência:
+	* http://www.bmfbovespa.com.br/lumis/portal/file/fileDownload.jsp?fileId=8A828D294E9C618F014EB7924B803F8B	 
+* Abrir o programa antes de executar e alterar as variáveis:
+	* bmf -> Informar o local do arquivo baixado;
+	* bmfload -> informar o local de saída do arquivo CSV que será gerado;
+* Observações: 
+	* O programa está fazendo o filtro das linhas que contém o tipo de Registro - 01 - Cotações dos papéis por dia;
