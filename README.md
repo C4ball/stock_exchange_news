@@ -40,7 +40,7 @@ Material TCC - Pos BI 17 - Impacta
 		* Consumer API keys
 		* Access token & access token secret
 	
-# Guia de Instalação - Crawler Sites (gsearch02.py)
+# Guia de Instalação - Crawler Sites (search\gsearch02.py)
 
 * Lembre-se de ter criado a sua API Key e CSE ID conforme informado nos pré-requisitos.
 
@@ -69,7 +69,7 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Aguardo o término da execução onde o programa criará a sub-pasta com o nome da variável "foldercargas" e uma sub-pasta para cada empresa informada em "empresas"
 
 
-# Guia de Instalação - Crawler Twitter - tsearch01.py
+# Guia de Instalação - Crawler Twitter - (search\tsearch01.py)
 
 * Baseado no projeto de Cralwer - Twitter disponível em:
 	* https://galeascience.wordpress.com/2016/03/18/collecting-twitter-data-with-python/ 
@@ -129,4 +129,4 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 		* Maximum number of empty tweet strings reached - exiting 	      ----> final da execução
 
-	* Importação de Dados p/ Transformação ***(Em Desenvolvimento)***
+# Importação de Dados p/ Transformação - (load\loadB3-csv.py)
