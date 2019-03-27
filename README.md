@@ -214,4 +214,4 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 		"select count(*) from nome-tabela;"
 
-	* Próximos passos - Criação de Tabela Analítica de Dados (Em desenvolvimento)
+# Próximos passos - Criação de Tabela Analítica de Dados (Em desenvolvimento)
