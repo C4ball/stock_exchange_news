@@ -183,5 +183,6 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 * Abrir o console de gerenciamento do MySQL;
 * Criar uma conexão com a sua base de dados, configurada no Google Cloud;
-* 
+* Executar o script de criação de tabelas localizado em: modelagem\script-dados.sql
+
 
