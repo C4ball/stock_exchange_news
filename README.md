@@ -52,7 +52,7 @@ Material TCC - Pos BI 17 - Impacta
 	* Para novos usuários o Google permite a utilização a carater de teste de um crédito de USD 300.00 onde utilizamos este recurso para este trabalho;
 
 * Console de Gerenciamento - MySQL
-	* Realizar download do Console de Gerenciamento - MySQL disponível em:
+	* Realizar download e instalação padrão do Console de Gerenciamento - MySQL disponível em:
 		* https://dev.mysql.com/downloads/workbench/
 	
 # Guia de Instalação - Crawler Sites (search\gsearch02.py)
@@ -180,4 +180,8 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 	* https://cloud.google.com/sql/docs/mysql/create-manage-databases 
 
 # Criação de Tabelas
+
+* Abrir o console de gerenciamento do MySQL;
+* Criar uma conexão com a sua base de dados, configurada no Google Cloud;
+* 
 
