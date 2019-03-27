@@ -182,7 +182,7 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 	* Criação de Tabelas
 
 		* Abrir o console de gerenciamento do MySQL;
-		* Criar uma conexão com a sua base de dados, configurada no Google Cloud, informando suas credenciais de acesso e nome da base criada;
+		* Criar uma conexão com a sua base de dados, configurada no Google Cloud, informando o endereço IP válido para sua instância, suas credenciais de acesso e nome da base criada;
 		
 		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-2.jpg?raw=true "Exemplo Configuração MySQL")
 
@@ -192,7 +192,22 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 	
 	* Importação dos dados
 
-		* 
+		* Selecione a tabela ao qual você deseja importar os dados:
+		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-4.jpg?raw=true "Exemplo Importação de Dados")
 
+		* Selecione o arquivo de origem:
+		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-5.jpg?raw=true "Exemplo Importação de Dados")
+
+		* Informe qual a tabela destino e selecione a opção de "Truncate table before import" para limpar a tabela antes da importação:
+		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-6.jpg?raw=true "Exemplo Importação de Dados")
+
+		* Altere o "Field Separator" de acordo com o separador padrão (nosso caso foi o "|") e altere o encoding de acordo com o arquivo origem (nosso caso foi (iso8859-1)):
+		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-7.jpg?raw=true "Exemplo Importação de Dados")
+
+		* Confirme a operação:
+		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-8.jpg?raw=true "Exemplo Importação de Dados")
+
+		* Acompanhe o processo de importação (o tempo varia de acordo com a rede):
+		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-9.jpg?raw=true "Exemplo Importação de Dados")
 
 
