@@ -174,15 +174,25 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Observações:
 	* Arquivo exemplo de saída: example\dados_empresas.zip
 
-# Criação de Base de Dados - SQL
+	* Criação de Base de Dados - SQL
 
-* Realizada criação da base de dados conforme manual do Google disponível em:
-	* https://cloud.google.com/sql/docs/mysql/create-manage-databases 
+		* Realizada criação de uma instância e uma base de dados conforme manual do Google disponível em:
+			* https://cloud.google.com/sql/docs/mysql/create-manage-databases 
 
-# Criação de Tabelas
+	* Criação de Tabelas
 
-* Abrir o console de gerenciamento do MySQL;
-* Criar uma conexão com a sua base de dados, configurada no Google Cloud;
-* Executar o script de criação de tabelas localizado em: modelagem\script-dados.sql
+		* Abrir o console de gerenciamento do MySQL;
+		* Criar uma conexão com a sua base de dados, configurada no Google Cloud, informando suas credenciais de acesso e nome da base criada;
+		
+		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-2.jpg?raw=true "Exemplo Configuração MySQL")
+
+		* Executar o script de criação de tabelas localizado em: modelagem\script-dados.sql
+
+		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-3.jpg?raw=true "Exemplo Criação de Tabelas")
+	
+	* Importação dos dados
+
+		* 
+
 
 
