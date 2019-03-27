@@ -210,4 +210,6 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 		* Acompanhe o processo de importação (o tempo varia de acordo com a rede):
 		![Alt text](https://github.com/rodrigodds/tccbi17/blob/master/images/mysql-9.jpg?raw=true "Exemplo Importação de Dados")
 
+		* Verifique o total de registros importados executando o comando:
 
+		"select count(*) from <nome-tabela>;"
