@@ -212,4 +212,4 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 
 		* Verifique o total de registros importados executando o comando:
 
-		"select count(*) from <nome-tabela>;"
+		"select count(*) from nome-tabela;"
