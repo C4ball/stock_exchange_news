@@ -12,7 +12,11 @@ Material TCC - Pos BI 17 - Impacta
 * Criação de crawler para download de Tweets referentes a determinadas empresas que operam na bolsa de valores.
 
 # Pré-Requisitos para Utilização:
-	
+
+* Plataforma utilizada para desenvolvimento: Windows 10 - 64 Bits
+
+* Plataforma de desenvolvimento Python: Anaconda 
+
 * Python 3.6 ou superior
 	* Bibliotecas em uso:
 		* calendar
@@ -41,6 +45,15 @@ Material TCC - Pos BI 17 - Impacta
 	* Gerar:
 		* Consumer API keys
 		* Access token & access token secret
+
+* Conta no serviço Google Cloud
+	* Realizar cadastro em seu nome no serviço Google Cloud, disponível no link:
+		(https://cloud.google.com)
+	* Para novos usuários o Google permite a utilização a carater de teste de um crédito de USD 300.00 onde utilizamos este recurso para este trabalho;
+
+* Console de Gerenciamento - MySQL
+	* Realizar download do Console de Gerenciamento - MySQL disponível em:
+		* https://dev.mysql.com/downloads/workbench/
 	
 # Guia de Instalação - Crawler Sites (search\gsearch02.py)
 
@@ -161,5 +174,10 @@ empresas = ['petrobras','vale', 'sabesp', 'cemig', 'Itaú Unibanco']
 * Observações:
 	* Arquivo exemplo de saída: example\dados_empresas.zip
 
+# Criação de Base de Dados - SQL
 
+* Realizada criação da base de dados conforme manual do Google disponível em:
+	* https://cloud.google.com/sql/docs/mysql/create-manage-databases 
+
+# Criação de Tabelas
 
