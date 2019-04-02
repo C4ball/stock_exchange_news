@@ -11,6 +11,7 @@ from threading import Thread
 #Variáveis Globais
 foldercargas = 'infomoney/Cargas/'
 empresas = ['petrobras','vale', 'Itaú Unibanco']
+textos = []
 
 #KEYS da API do Google
 with open('my_api_key.txt', 'r',encoding='utf8') as api_key:
@@ -24,14 +25,15 @@ with open('my_cse_id.txt', 'r',encoding='utf8') as cse_id:
 print(my_api_key)
 print(my_cse_id)
 
-with  open ('dados_empresas.csv', 'w', encoding='latin-1') as file:
+with  open ('dados_empresas.csv', 'w', encoding='utf-8') as file:
     file.write('')
 #Funções
 
 #Salva arquivos no caminha indicado
 def salva_arquivo(nome, conteudo):
-    with  open (nome+'.csv', 'a', encoding='latin-1') as file:
-        file.write(conteudo)
+    with  open (nome+'.csv', 'a', encoding='utf-8') as file:
+        file.write(conteudo + '\n')
+        file.close()
 
 #Limpa conteúdo HTML da página e extrai conteúdo
 def limpa_html(conteudo):    
@@ -68,7 +70,8 @@ def th(ur,foldercargas,empresa,ano):
     try:
         conteudo = urlopen(ur).read()#.decode('latin-1')
         texto = ur + '|' + empresa + '|' + limpa_html(conteudo) + '\n' 
-        salva_arquivo('dados_empresas', texto) 
+        textos.append(texto)
+        #salva_arquivo('dados_empresas', texto) 
 #        print(str(ur.index(noticia)))
     except:
         print("Erro na carga de: " + ur)
@@ -118,4 +121,10 @@ for empresa in empresas:
             
         for b in threadlist:
             b.join()
-                
+
+for i in textos:
+    i = str(i)
+    i = i.replace('\n','')
+    i.encode('utf-8')   
+        
+    salva_arquivo('dados_empresas', i)             
