@@ -10,14 +10,14 @@ from threading import Thread
 
 #Variáveis Globais
 foldercargas = 'infomoney/Cargas/'
-empresas = ['petrobras','vale', 'Itaú Unibanco']
+empresas = ['INDUSVAL BANK','GENERALSHOPP','INEPAR','PETRORIO','ENAUTA PART','BANCO PAN','BTGP BANCO','JBS','MINERVA','SID NACIONAL','GAFISA','FER HERINGER','VIVER','DOMMO','PDG REALT','AZEVEDO','LOPES BRASIL','TESLA INC','FORJA TAURUS','ROSSI RESID']
 textos = []
 
 #KEYS da API do Google
-with open('my_api_key.txt', 'r',encoding='utf8') as api_key:
+with open('../my_api_key.txt', 'r',encoding='utf8') as api_key:
     my_api_key = api_key.readlines()
 
-with open('my_cse_id.txt', 'r',encoding='utf8') as cse_id:
+with open('../my_cse_id.txt', 'r',encoding='utf8') as cse_id:
     my_cse_id = cse_id.readlines()
 
 
@@ -25,7 +25,7 @@ with open('my_cse_id.txt', 'r',encoding='utf8') as cse_id:
 print(my_api_key)
 print(my_cse_id)
 
-with  open ('dados_empresas.csv', 'w', encoding='utf-8') as file:
+with  open ('../load/dados_empresas.csv', 'w', encoding='utf-8') as file:
     file.write('')
 #Funções
 
@@ -81,7 +81,7 @@ for empresa in empresas:
 
 
     #Range de anos a serem buscados
-    for ano in range(2018,2020):
+    for ano in range(2015,2020):
 
         #Array de Links de noticias POR EMPRESA POR ANO
         noticias = []
@@ -127,4 +127,4 @@ for i in textos:
     i = i.replace('\n','')
     i.encode('utf-8')   
         
-    salva_arquivo('dados_empresas', i)             
+    salva_arquivo('../load/dados_empresas', i)             
