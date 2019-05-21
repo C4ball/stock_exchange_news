@@ -54,8 +54,9 @@ CREATE TABLE "dadosb3" (
   "PREULT" varchar(300) DEFAULT NULL,
   "PREOFC" varchar(300) DEFAULT NULL,
   "PREOFV" varchar(300) DEFAULT NULL,
-  "CODISI" varchar(300) DEFAULT NULL
-) tablespace "dadostwitter";
+  "CODISI" varchar(300) DEFAULT NULL,
+  "VOLUME" varchar(300) DEFAULT NULL
+)tablespace "dadostwitter";
 
 
 
