@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 
 
+import os
+if os.path.exists("bmf_load.csv"):
+  os.remove("bmf_load.csv")
+else:
+  print('Arquivo não encontrado, iniciando carga...')
+
+
 bmfload = open("bmf_load.csv",'w')
 bmfload.write('')
 bmfload.close()
