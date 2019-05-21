@@ -71,12 +71,10 @@ CREATE TABLE "dadosnoticias" (
 
 CREATE TABLE "dadostwitter" (
   "ID" varchar(300) NOT NULL,
-  "CRIADO" varchar(300) DEFAULT NULL,
+  "TIMESTAMP" varchar(300) DEFAULT NULL,
   "USER" varchar(100) DEFAULT NULL,
-  "EMPRESA" varchar(100) DEFAULT NULL,
-  "TEXTO" varchar(4000) DEFAULT NULL,
-  "LINGUA" varchar(45) DEFAULT NULL,
-  "RETWEET" varchar(45) DEFAULT NULL,
+  "TEXT" varchar(4000) DEFAULT NULL,
+  "RETWEETS" varchar(45) DEFAULT NULL,
   PRIMARY KEY ("ID")
 ) tablespace "dadostwitter";
 
