@@ -9,7 +9,6 @@
 # Imports the Google Cloud client library
 from google.cloud import bigquery
 import os
-import psycopg2
 import pandas 
 
 import locale
@@ -22,9 +21,6 @@ from google.cloud.language import enums
 from google.cloud.language import types
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/caball/Documents/BuscaInfomoney-81e7f58e6908.json"
-
-#conn = psycopg2.connect("host=35.211.196.189 dbname=projetotcc user=postgres password=123456")
-conn = psycopg2.connect("host=localhost dbname=tcc user=postgres password=123456")
 
 # Instantiates a client
 client = language.LanguageServiceClient()
