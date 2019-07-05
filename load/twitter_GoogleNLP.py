@@ -18,22 +18,6 @@ from google.cloud.language import types
 # Imports the Google Cloud client library
 from google.cloud import bigquery
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/caball/Documents/BuscaInfomoney-81e7f58e6908.json"
-
-# Instantiates a client
-client = language.LanguageServiceClient()
-
-# Instantiates a client
-bigquery_client = bigquery.Client()
-
-# The name for the new dataset
-dataset_id = 'dados_b3'
-table = 'twittes_full_alta_cod'
-
-# Prepares a reference to the new dataset
-dataset_ref = bigquery_client.dataset(dataset_id)
-dataset = bigquery.Dataset(dataset_ref)
-
 
 #FUNCAO PARA EXIBIR STATUS DA CARGA
 def backline():        
@@ -56,6 +40,9 @@ def analise_sentimento(base):
         document = types.Document(
             content=text,
             type=enums.Document.Type.PLAIN_TEXT)
+        
+        
+        
         try:
             sentiment = client.analyze_sentiment(document=document).document_sentiment
             
@@ -66,12 +53,14 @@ def analise_sentimento(base):
             print("{} : {} = {} ".format(s,text,sentiment.score))                        # just print and flush
             print('\r', end='')  
             
-        except:
+        except Exception as e:
+            
             base.iloc[index,11] = 'erro'
             base.iloc[index,12] = 'erro'
-            print("{} : {} = ERRO ".format(s,text))                        # just print and flush
+            print("{} : {} = ERRO ".format(str(count),text))                        # just print and flush
             print('\r', end='')  
-                
+            print(e)
+              
         #ANALISE DE SENTIMENTO DAS NOTICIAS
         
         #EXIBE STATUS
@@ -134,25 +123,6 @@ for file in os.listdir("twitter/baixa/codigo/"):
 #################################################################################
 
 
-twittes_full_alta_cod.insert(11,"Weekday",twittes_full_alta_cod['timestamp'].dt.weekday)
-twittes_full_alta_cod.insert(12,"Week",twittes_full_alta_cod['timestamp'].dt.week)
-twittes_full_alta_cod.insert(13,"Month",twittes_full_alta_cod['timestamp'].dt.month)
-twittes_full_alta_cod.insert(14,"Year",twittes_full_alta_cod['timestamp'].dt.year)
-
-twittes_full_alta_nome.insert(11,"Weekday",twittes_full_alta_nome['timestamp'].dt.weekday)
-twittes_full_alta_nome.insert(12,"Week",twittes_full_alta_nome['timestamp'].dt.week)
-twittes_full_alta_nome.insert(13,"Month",twittes_full_alta_nome['timestamp'].dt.month)
-twittes_full_alta_nome.insert(14,"Year",twittes_full_alta_nome['timestamp'].dt.year)
-
-twittes_full_baixa_cod.insert(11,"Weekday",twittes_full_baixa_cod['timestamp'].dt.weekday)
-twittes_full_baixa_cod.insert(12,"Week",twittes_full_baixa_cod['timestamp'].dt.week)
-twittes_full_baixa_cod.insert(13,"Month",twittes_full_baixa_cod['timestamp'].dt.month)
-twittes_full_baixa_cod.insert(14,"Year",twittes_full_baixa_cod['timestamp'].dt.year)
-
-twittes_full_baixa_nome.insert(11,"Weekday",twittes_full_baixa_nome['timestamp'].dt.weekday)
-twittes_full_baixa_nome.insert(12,"Week",twittes_full_baixa_nome['timestamp'].dt.week)
-twittes_full_baixa_nome.insert(13,"Month",twittes_full_baixa_nome['timestamp'].dt.month)
-twittes_full_baixa_nome.insert(14,"Year",twittes_full_baixa_nome['timestamp'].dt.year)
 
 #################################################################################
 
@@ -171,15 +141,62 @@ twittes_full_baixa_nome['TEXT_SENTIMENT'] = ''
 twittes_full_baixa_nome['TEXT_MAGNITUDE'] = ''
 
 
-twittes_full_alta_cod = analise_sentimento(twittes_full_alta_cod)
 
-twittes_full_alta_nome = analise_sentimento(twittes_full_alta_nome)
+twittes_full_alta_cod_2 = twittes_full_alta_cod.query('timestamp >= 20181001')
 
-twittes_full_baixa_cod = analise_sentimento(twittes_full_baixa_cod)
+twittes_full_alta_nome_2 = twittes_full_alta_nome.query('timestamp >= 20181001')
+twittes_full_baixa_cod_2 = twittes_full_baixa_cod.query('timestamp >= 20181001')
+twittes_full_baixa_nome_2 = twittes_full_baixa_nome.query('timestamp >= 20181001')
 
-twittes_full_baixa_nome = analise_sentimento(twittes_full_baixa_nome)
 
 
+
+
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="teste-ee4b54698e33.json"
+# Instantiates a client
+client = language.LanguageServiceClient()
+
+twittes_full_alta_cod = analise_sentimento(twittes_full_alta_cod_2)
+
+twittes_full_alta_nome = analise_sentimento(twittes_full_alta_nome_2)
+
+
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="teste-ee4b54698e33.json"
+# Instantiates a client
+client = language.LanguageServiceClient()
+
+twittes_full_baixa_cod = analise_sentimento(twittes_full_baixa_cod_2)
+
+twittes_full_baixa_nome = analise_sentimento(twittes_full_baixa_nome_2)
+
+
+to_drop = ['Weekday','Week','Month','Year']
+twittes_full_alta_nome = twittes_full_alta_nome.drop(to_drop,axis=1)
+
+
+twittes_full_alta_cod_2.insert(13,"Month",twittes_full_alta_cod['timestamp'].dt.month)
+twittes_full_alta_cod_2.insert(14,"Year",twittes_full_alta_cod['timestamp'].dt.year)
+twittes_full_alta_cod_2.insert(15,"Weekday",twittes_full_alta_cod['timestamp'].dt.weekday)
+twittes_full_alta_cod_2.insert(16,"Week",twittes_full_alta_cod['timestamp'].dt.week)
+
+
+twittes_full_alta_nome_2.insert(13,"Month",twittes_full_alta_nome['timestamp'].dt.month)
+twittes_full_alta_nome_2.insert(14,"Year",twittes_full_alta_nome['timestamp'].dt.year)
+twittes_full_alta_nome_2.insert(15,"Weekday",twittes_full_alta_nome['timestamp'].dt.weekday)
+twittes_full_alta_nome_2.insert(16,"Week",twittes_full_alta_nome['timestamp'].dt.week)
+
+
+twittes_full_baixa_cod_2.insert(15,"Weekday",twittes_full_baixa_cod['timestamp'].dt.weekday)
+twittes_full_baixa_cod_2.insert(16,"Week",twittes_full_baixa_cod['timestamp'].dt.week)
+twittes_full_baixa_cod_2.insert(13,"Month",twittes_full_baixa_cod['timestamp'].dt.month)
+twittes_full_baixa_cod_2.insert(14,"Year",twittes_full_baixa_cod['timestamp'].dt.year)
+
+twittes_full_baixa_nome_2.insert(15,"Weekday",twittes_full_baixa_nome['timestamp'].dt.weekday)
+twittes_full_baixa_nome_2.insert(16,"Week",twittes_full_baixa_nome['timestamp'].dt.week)
+twittes_full_baixa_nome_2.insert(13,"Month",twittes_full_baixa_nome['timestamp'].dt.month)
+twittes_full_baixa_nome_2.insert(14,"Year",twittes_full_baixa_nome['timestamp'].dt.year)
 
 ####
 
@@ -199,6 +216,23 @@ twittes_full_baixa_nome = analise_sentimento(twittes_full_baixa_nome)
 #print("Tabelas Limpas.")
 
 # INICIO DO PROCESSO DE CARGA DE TWITTES
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="BuscaInfomoney-1290108871c4.json"
+
+
+
+# Instantiates a client
+bigquery_client = bigquery.Client()
+
+# The name for the new dataset
+dataset_id = 'dados_b3'
+table = 'twittes_full_alta_cod'
+
+# Prepares a reference to the new dataset
+dataset_ref = bigquery_client.dataset(dataset_id)
+dataset = bigquery.Dataset(dataset_ref)
+
+
+
 
 job_config = bigquery.LoadJobConfig()
 job_config.autodetect = True
@@ -207,11 +241,15 @@ job_config.source_format = bigquery.SourceFormat.CSV
 twittes_full_alta_nome.info()
 twittes_full_alta_cod.info()
 
-twittes_full_alta_cod['TEXT_SENTIMENT'] = twittes_full_alta_cod['TEXT_SENTIMENT'].replace('erro', np.nan, regex=True)
-twittes_full_alta_cod['TEXT_MAGNITUDE'] = twittes_full_alta_cod['TEXT_MAGNITUDE'].replace('erro', np.nan, regex=True)
+twittes_full_alta_cod['TEXT_SENTIMENT'] = twittes_full_alta_cod['TEXT_SENTIMENT'].replace( np.nan, 'erro', regex=True)
+twittes_full_alta_cod['TEXT_MAGNITUDE'] = twittes_full_alta_cod['TEXT_MAGNITUDE'].replace( np.nan, 'erro', regex=True)
 
-twittes_full_alta_nome['TEXT_SENTIMENT'] = twittes_full_alta_nome['TEXT_SENTIMENT'].replace('erro', np.nan, regex=True)
-twittes_full_alta_nome['TEXT_MAGNITUDE'] = twittes_full_alta_nome['TEXT_MAGNITUDE'].replace('erro', np.nan, regex=True)
+
+twittes_full_alta_nome['TEXT_SENTIMENT'] = twittes_full_alta_cod['TEXT_SENTIMENT'].replace( np.nan, 'erro', regex=True)
+twittes_full_alta_nome['TEXT_MAGNITUDE'] = twittes_full_alta_cod['TEXT_MAGNITUDE'].replace( np.nan, 'erro', regex=True)
+
+twittes_full_alta_nome.to_csv('analise_twitter_nome.csv')
+
 
 
 load_job = bigquery_client.load_table_from_dataframe(
