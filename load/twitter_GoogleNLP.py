@@ -55,9 +55,9 @@ def analise_sentimento(base):
             
         except Exception as e:
             
-            base.iloc[index,11] = 'erro'
-            base.iloc[index,12] = 'erro'
-            print("{} : {} = ERRO ".format(str(count),text))                        # just print and flush
+            #base.iloc[index,11] = 'erro'
+            #base.iloc[index,12] = 'erro'
+            #print("{} : {} = ERRO ".format(str(count),text))                        # just print and flush
             print('\r', end='')  
             print(e)
               
@@ -131,72 +131,81 @@ for file in os.listdir("twitter/baixa/codigo/"):
 twittes_full_alta_cod['TEXT_SENTIMENT'] = ''
 twittes_full_alta_cod['TEXT_MAGNITUDE'] = ''
 
-twittes_full_alta_nome['TEXT_SENTIMENT'] = ''
-twittes_full_alta_nome['TEXT_MAGNITUDE'] = ''
+#twittes_full_alta_nome['TEXT_SENTIMENT'] = ''
+#twittes_full_alta_nome['TEXT_MAGNITUDE'] = ''
 
 twittes_full_baixa_cod['TEXT_SENTIMENT'] = ''
 twittes_full_baixa_cod['TEXT_MAGNITUDE'] = ''
 
-twittes_full_baixa_nome['TEXT_SENTIMENT'] = ''
-twittes_full_baixa_nome['TEXT_MAGNITUDE'] = ''
+#twittes_full_baixa_nome['TEXT_SENTIMENT'] = ''
+#twittes_full_baixa_nome['TEXT_MAGNITUDE'] = ''
 
 
 
 twittes_full_alta_cod_2 = twittes_full_alta_cod.query('timestamp >= 20181001')
-
-twittes_full_alta_nome_2 = twittes_full_alta_nome.query('timestamp >= 20181001')
 twittes_full_baixa_cod_2 = twittes_full_baixa_cod.query('timestamp >= 20181001')
-twittes_full_baixa_nome_2 = twittes_full_baixa_nome.query('timestamp >= 20181001')
+
+#twittes_full_alta_nome_2 = twittes_full_alta_nome.query('timestamp >= 20181001')
+#twittes_full_baixa_nome_2 = twittes_full_baixa_nome.query('timestamp >= 20181001')
 
 
 
+twittes_full_alta_cod_2 = twittes_full_alta_cod_2.reset_index()
+twittes_full_baixa_cod_2 = twittes_full_baixa_cod_2.reset_index()
+
+#twittes_full_alta_nome_2 = twittes_full_alta_nome_2.reset_index()
+#twittes_full_baixa_nome_2 = twittes_full_baixa_nome_2.reset_index()
 
 
+twittes_full_alta_cod_2 = twittes_full_alta_cod_2.drop(columns=['index'])
+twittes_full_baixa_cod_2 = twittes_full_baixa_cod_2.drop(columns=['index'])
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="teste-ee4b54698e33.json"
+#twittes_full_alta_nome_2 = twittes_full_alta_nome_2.drop(columns=['index'])
+#twittes_full_baixa_nome_2 = twittes_full_baixa_nome_2.drop(columns=['index'])
+
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="sentimentosb3-ff5d24d78ea9.json"
 # Instantiates a client
 client = language.LanguageServiceClient()
 
-twittes_full_alta_cod = analise_sentimento(twittes_full_alta_cod_2)
-
-twittes_full_alta_nome = analise_sentimento(twittes_full_alta_nome_2)
-
+twittes_full_baixa_cod = analise_sentimento(twittes_full_baixa_cod_2).copy()
+twittes_full_alta_cod = analise_sentimento(twittes_full_alta_cod_2).copy()
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="teste-ee4b54698e33.json"
-# Instantiates a client
-client = language.LanguageServiceClient()
-
-twittes_full_baixa_cod = analise_sentimento(twittes_full_baixa_cod_2)
-
-twittes_full_baixa_nome = analise_sentimento(twittes_full_baixa_nome_2)
+twittes_full_alta_cod_2 = twittes_full_alta_cod.copy()
+twittes_full_baixa_cod_2 = twittes_full_baixa_cod.copy()
 
 
-to_drop = ['Weekday','Week','Month','Year']
-twittes_full_alta_nome = twittes_full_alta_nome.drop(to_drop,axis=1)
+
+twittes_full_alta_cod.insert(13,"Month",twittes_full_alta_cod['timestamp'].dt.month)
+twittes_full_alta_cod.insert(14,"Year",twittes_full_alta_cod['timestamp'].dt.year)
+twittes_full_alta_cod.insert(15,"Weekday",twittes_full_alta_cod['timestamp'].dt.weekday)
+twittes_full_alta_cod.insert(16,"Week",twittes_full_alta_cod['timestamp'].dt.week)
 
 
-twittes_full_alta_cod_2.insert(13,"Month",twittes_full_alta_cod['timestamp'].dt.month)
-twittes_full_alta_cod_2.insert(14,"Year",twittes_full_alta_cod['timestamp'].dt.year)
-twittes_full_alta_cod_2.insert(15,"Weekday",twittes_full_alta_cod['timestamp'].dt.weekday)
-twittes_full_alta_cod_2.insert(16,"Week",twittes_full_alta_cod['timestamp'].dt.week)
+twittes_full_baixa_cod.insert(13,"Month",twittes_full_alta_cod['timestamp'].dt.month)
+twittes_full_baixa_cod.insert(14,"Year",twittes_full_alta_cod['timestamp'].dt.year)
+twittes_full_baixa_cod.insert(15,"Weekday",twittes_full_alta_cod['timestamp'].dt.weekday)
+twittes_full_baixa_cod.insert(16,"Week",twittes_full_alta_cod['timestamp'].dt.week)
 
 
-twittes_full_alta_nome_2.insert(13,"Month",twittes_full_alta_nome['timestamp'].dt.month)
-twittes_full_alta_nome_2.insert(14,"Year",twittes_full_alta_nome['timestamp'].dt.year)
-twittes_full_alta_nome_2.insert(15,"Weekday",twittes_full_alta_nome['timestamp'].dt.weekday)
-twittes_full_alta_nome_2.insert(16,"Week",twittes_full_alta_nome['timestamp'].dt.week)
+
+#twittes_full_alta_nome_2.insert(13,"Month",twittes_full_alta_nome['timestamp'].dt.month)
+#twittes_full_alta_nome_2.insert(14,"Year",twittes_full_alta_nome['timestamp'].dt.year)
+#twittes_full_alta_nome_2.insert(15,"Weekday",twittes_full_alta_nome['timestamp'].dt.weekday)
+#twittes_full_alta_nome_2.insert(16,"Week",twittes_full_alta_nome['timestamp'].dt.week)
 
 
-twittes_full_baixa_cod_2.insert(15,"Weekday",twittes_full_baixa_cod['timestamp'].dt.weekday)
-twittes_full_baixa_cod_2.insert(16,"Week",twittes_full_baixa_cod['timestamp'].dt.week)
-twittes_full_baixa_cod_2.insert(13,"Month",twittes_full_baixa_cod['timestamp'].dt.month)
-twittes_full_baixa_cod_2.insert(14,"Year",twittes_full_baixa_cod['timestamp'].dt.year)
+#twittes_full_baixa_nome_2.insert(13,"Weekday",twittes_full_baixa_nome['timestamp'].dt.weekday)
+#twittes_full_baixa_nome_2.insert(14,"Week",twittes_full_baixa_nome['timestamp'].dt.week)
+#twittes_full_baixa_nome_2.insert(15,"Month",twittes_full_baixa_nome['timestamp'].dt.month)
+#twittes_full_baixa_nome_2.insert(16,"Year",twittes_full_baixa_nome['timestamp'].dt.year)
 
-twittes_full_baixa_nome_2.insert(15,"Weekday",twittes_full_baixa_nome['timestamp'].dt.weekday)
-twittes_full_baixa_nome_2.insert(16,"Week",twittes_full_baixa_nome['timestamp'].dt.week)
-twittes_full_baixa_nome_2.insert(13,"Month",twittes_full_baixa_nome['timestamp'].dt.month)
-twittes_full_baixa_nome_2.insert(14,"Year",twittes_full_baixa_nome['timestamp'].dt.year)
+
+
+
+
+
 
 ####
 
@@ -220,6 +229,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="BuscaInfomoney-1290108871c4.json"
 
 
 
+
 # Instantiates a client
 bigquery_client = bigquery.Client()
 
@@ -235,46 +245,75 @@ dataset = bigquery.Dataset(dataset_ref)
 
 
 job_config = bigquery.LoadJobConfig()
-job_config.autodetect = True
-job_config.source_format = bigquery.SourceFormat.CSV
+#job_config.autodetect = True
+job_config.schema = [
+    bigquery.SchemaField("Empresa", "STRING"),
+    bigquery.SchemaField("fullname", "STRING"),
+    bigquery.SchemaField("html", "STRING"),
+    bigquery.SchemaField("id", "STRING"),
+    bigquery.SchemaField("likes", "STRING"),
+    bigquery.SchemaField("replies", "STRING"),
+    bigquery.SchemaField("retweets", "STRING"),
+    bigquery.SchemaField("text", "STRING"),
+    bigquery.SchemaField("timestamp", "STRING"),
+    bigquery.SchemaField("url", "STRING"),
+    bigquery.SchemaField("user", "STRING"),
+    bigquery.SchemaField("TEXT_SENTIMENT", "STRING"),
+    bigquery.SchemaField("TEXT_MAGNITUDE", "STRING"),
+    bigquery.SchemaField("Month", "STRING"),
+    bigquery.SchemaField("Year", "STRING"),
+    bigquery.SchemaField("Weekday", "STRING"),
+    bigquery.SchemaField("Week", "STRING")
+]
 
-twittes_full_alta_nome.info()
-twittes_full_alta_cod.info()
-
-twittes_full_alta_cod['TEXT_SENTIMENT'] = twittes_full_alta_cod['TEXT_SENTIMENT'].replace( np.nan, 'erro', regex=True)
-twittes_full_alta_cod['TEXT_MAGNITUDE'] = twittes_full_alta_cod['TEXT_MAGNITUDE'].replace( np.nan, 'erro', regex=True)
-
-
-twittes_full_alta_nome['TEXT_SENTIMENT'] = twittes_full_alta_cod['TEXT_SENTIMENT'].replace( np.nan, 'erro', regex=True)
-twittes_full_alta_nome['TEXT_MAGNITUDE'] = twittes_full_alta_cod['TEXT_MAGNITUDE'].replace( np.nan, 'erro', regex=True)
-
-twittes_full_alta_nome.to_csv('analise_twitter_nome.csv')
-
-
-
-load_job = bigquery_client.load_table_from_dataframe(
-    twittes_full_alta_cod, dataset_ref.table(table), job_config=job_config
-)  # API request
-
-table = 'twittes_full_alta_nome'
-
-load_job = bigquery_client.load_table_from_dataframe(
-    twittes_full_alta_nome, dataset_ref.table(table), job_config=job_config
-)  # API request
+#job_config.source_format = bigquery.SourceFormat.CSV
 
 
 
-table = 'twittes_full_baixa_cod'
+twittes_full_alta_cod_3 = twittes_full_alta_cod.copy()
+twittes_full_baixa_cod_3 = twittes_full_baixa_cod.copy()
 
-load_job = bigquery_client.load_table_from_dataframe(
-    twittes_full_baixa_cod, dataset_ref.table(table), job_config=job_config
-)  # API request
 
-table = 'twittes_full_baixa_nome'
 
-load_job = bigquery_client.load_table_from_dataframe(
-    twittes_full_baixa_nome, dataset_ref.table(table), job_config=job_config
-)  # API request
+
+for col in twittes_full_baixa_cod_3.columns:
+    if col != 'TEXT_SENTIMENT' and col != 'TEXT_MAGNITUDE':
+        try:
+            twittes_full_baixa_cod_3[col] = twittes_full_baixa_cod_3[col].str.replace(',','')
+        except:
+            twittes_full_baixa_cod_3[col] = twittes_full_baixa_cod_3[col]
+            
+     
+for col in twittes_full_alta_cod_3.columns:
+    if col != 'TEXT_SENTIMENT' and col != 'TEXT_MAGNITUDE':
+        try:
+            twittes_full_alta_cod_3[col] = twittes_full_alta_cod_3[col].str.replace(',','')
+        except:
+            twittes_full_alta_cod_3[col] = twittes_full_alta_cod_3[col]
+        
+        
+twittes_full_alta_cod_3.to_csv("twittes_full_alta_cod.csv")  
+
+twittes_full_baixa_cod_3.to_csv("twittes_full_baixa_cod.csv")           
+
+twittes_full_alta_cod_3.to_excel("twittes_full_alta_cod.xlsx")  
+
+twittes_full_baixa_cod_3.to_excel("twittes_full_baixa_cod.xlsx")         
+
+
+
+
+ 
+import pandas_gbq
+pandas_gbq.to_gbq(
+    twittes_full_alta_cod_3, 'dados_b3.twittes_full_alta_cod', project_id='buscainfomoney', if_exists='replace',
+)
+
+pandas_gbq.to_gbq(
+    twittes_full_baixa_cod_3, 'dados_b3.twittes_full_baixa_cod', project_id='buscainfomoney', if_exists='replace',
+)
+
+     
 
 
 
