@@ -183,10 +183,10 @@ twittes_full_alta_cod.insert(15,"Weekday",twittes_full_alta_cod['timestamp'].dt.
 twittes_full_alta_cod.insert(16,"Week",twittes_full_alta_cod['timestamp'].dt.week)
 
 
-twittes_full_baixa_cod.insert(13,"Month",twittes_full_alta_cod['timestamp'].dt.month)
-twittes_full_baixa_cod.insert(14,"Year",twittes_full_alta_cod['timestamp'].dt.year)
-twittes_full_baixa_cod.insert(15,"Weekday",twittes_full_alta_cod['timestamp'].dt.weekday)
-twittes_full_baixa_cod.insert(16,"Week",twittes_full_alta_cod['timestamp'].dt.week)
+twittes_full_baixa_cod.insert(13,"Month",twittes_full_baixa_cod['timestamp'].dt.month)
+twittes_full_baixa_cod.insert(14,"Year",twittes_full_baixa_cod['timestamp'].dt.year)
+twittes_full_baixa_cod.insert(15,"Weekday",twittes_full_baixa_cod['timestamp'].dt.weekday)
+twittes_full_baixa_cod.insert(16,"Week",twittes_full_baixa_cod['timestamp'].dt.week)
 
 
 
