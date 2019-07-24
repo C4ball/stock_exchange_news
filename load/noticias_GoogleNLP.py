@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+d#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #"""
 #Created on Tue May 21 19:27:01 2019
@@ -150,7 +150,12 @@ print("Carregadas {} Linhas.".format(destination_table.num_rows))
 
 
 query_2 = ('insert into dados_b3.historico_noticias  \
-select * from dados_b3.noticias \
+select URL, EMPRESA, DATA, TITULO, NOTICIA, TITLE_SENTIMENT, TITLE_MAGNITUDE, TEXT_SENTIMENT, TEXT_MAGNITUDE, WEEKDAY, WEEK, MONTH, YEAR,1, \
+case when TEXT_SENTIMENT > 1 then 1 end, \
+case when TEXT_SENTIMENT < 1 then 1 end, \
+case when TITLE_MAGNITUDE > 1 then 1 end, \
+case when TITLE_MAGNITUDE < 1 then 1 end \
+ from dados_b3.noticias \
 where URL not in (select URL from dados_b3.historico_noticias ) ')
 query_job_2 = bigquery_client.query(query_2)
 print("Dados carregados na tabela Historico.")
