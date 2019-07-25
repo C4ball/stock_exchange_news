@@ -186,7 +186,17 @@ query_job_2.result()
 print("Dados carregados na tabela Historico.")
 
 
+query =  open("INSERT_NOTICIAS_QTD.SQL", "r")    
+query = query.read()
+ 
+query_job = bigquery_client.query(query)
 
+try:
+    query_job = bigquery_client.query(query)
+    query_job.result()
+    print("Dados carregados na tabela QTD.")
+except Exception as e:
+    print('Erro ao carregadar os dados de QTD: {}'.format(e))
 
 
 
