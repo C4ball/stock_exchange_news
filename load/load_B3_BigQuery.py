@@ -10,6 +10,7 @@ Created on Mon Jun  3 02:48:02 2019
 from google.cloud import bigquery
 import os
 import pandas as pd
+import pandas_gbq
 import numpy as np
 import datetime
 from pandas.tseries.offsets import BDay
@@ -47,15 +48,16 @@ colunas = ['TIPREG',
         'CODISI', 
         'QUATOT' ]
 
-col_num = ['TIPREG',
-        'PREABE', 
+col_num = ['PREABE', 
         'PREMAX', 
         'PREMIN', 
         'PREMD ',
         'PREULT', 
         'PREOFC', 
-        'PREOFV', 
-        'QUATOT' ]
+        'PREOFV']
+
+col_int = ['TIPREG',
+           'QUATOT' ]
 
 col_str = ['CODNEG', 
         'NOMRES', 
@@ -68,7 +70,11 @@ df = pd.read_csv('bmf_load.csv', delimiter=',',names = colunas, parse_dates=['DA
 
 
 for col in col_num:
-    df[col] = pd.to_numeric(df[col])
+    df[col] = pd.to_numeric(df[col], downcast='float')
+    
+for col in col_int:
+    df[col] = pd.to_numeric(df[col], downcast='integer')
+    
 
 for col in col_str:
     df[col] = df[col].str.strip()
@@ -106,25 +112,29 @@ df['month_4_w'] = (df['DATAPREG'] + np.timedelta64(-4, 'M')).dt.month
 df['month_4_y'] = (df['DATAPREG'] + np.timedelta64(-4, 'M')).dt.year
 
 
+df = df.rename(columns={"PREMD ": "PREMD_"})
+df = df.rename(columns={"PREMD": "PREMD_"})
+
 tail = df.tail(20)
 head = df.head(20)
 
 
-job_config = bigquery.LoadJobConfig()
-job_config.autodetect = True
 
+try:
+    pandas_gbq.to_gbq(
+        df, 'dados_b3.dadosb3_datas', project_id='buscainfomoney', if_exists='replace',
+    )
+    print('Base carregada com sucesso!')
+except Exception as e:
+    print('Erro ao carregadar os dados: {}'.format(e))
+    
+query =  open("INSERT_historico_b3_N.SQL", "r")    
+query = query.read()
+ 
+query_job = bigquery_client.query(query)
 
-
-job_config.source_format = bigquery.SourceFormat.CSV
-
-
-load_job = bigquery_client.load_table_from_dataframe(
-    df, dataset_ref.table("dadosb3_datas"), job_config=job_config
-)  # API request
-print("Starting job {}".format(load_job.job_id))
-
-load_job.result()  # Waits for table load to complete.
-print("Job finished.")
-
-destination_table = bigquery_client.get_table(dataset_ref.table("dadosb3_datas"))
-print("Loaded {} rows.".format(destination_table.num_rows))
+try:
+    query_job.result()
+    print("Dados carregados na tabela Historico.")
+except Exception as e:
+    print('Erro ao carregadar os dados HistoricoS: {}'.format(e))
