@@ -200,3 +200,18 @@ except Exception as e:
 
 
 
+query =  open("INSERT_historico_b3_N2.SQL", "r")    
+query = query.read()
+ 
+query_job = bigquery_client.query(query)
+
+try:
+    query_job = bigquery_client.query(query)
+    query_job.result()
+    print("Dados carregados na tabela QTD.")
+except Exception as e:
+    print('Erro ao carregadar os dados de QTD: {}'.format(e))
+
+
+
+
